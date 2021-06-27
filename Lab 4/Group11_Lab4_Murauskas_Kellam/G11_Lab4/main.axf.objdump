@@ -1,0 +1,1425 @@
+
+//campus.mcgill.ca/emf/SWE/bkella/My Documents/ECSE 324/G11_Lab4/main.axf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__cs3_interrupt_vector>:
+   0:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  10:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  20:	40 00 00 00 c0 0a 00 00 c4 0a 00 00 c8 0a 00 00     @...............
+  30:	cc 0a 00 00 bc 0a 00 00 d0 0a 00 00 d4 0a 00 00     ................
+
+00000040 <__cs3_reset>:
+  40:	ea000026 	b	e0 <__cs3_start_asm_sim>
+
+00000044 <__cs3_start_c>:
+  44:	e59f608c 	ldr	r6, [pc, #140]	; d8 <H_CHAR_RES+0x88>
+  48:	e3560000 	cmp	r6, #0
+  4c:	e92d4080 	push	{r7, lr}
+  50:	e2466001 	sub	r6, r6, #1
+  54:	0a00001e 	beq	d4 <H_CHAR_RES+0x84>
+  58:	e59f507c 	ldr	r5, [pc, #124]	; dc <H_CHAR_RES+0x8c>
+  5c:	e3a00000 	mov	r0, #0
+  60:	e3a01000 	mov	r1, #0
+  64:	e515200c 	ldr	r2, [r5, #-12]
+  68:	e515e010 	ldr	lr, [r5, #-16]
+  6c:	e5154008 	ldr	r4, [r5, #-8]
+  70:	e15e0002 	cmp	lr, r2
+  74:	00822004 	addeq	r2, r2, r4
+  78:	0a000009 	beq	a4 <H_CHAR_RES+0x54>
+  7c:	e3540000 	cmp	r4, #0
+  80:	0a000007 	beq	a4 <H_CHAR_RES+0x54>
+  84:	e1a07002 	mov	r7, r2
+  88:	e1a0c002 	mov	r12, r2
+  8c:	e8be000c 	ldm	lr!, {r2, r3}
+  90:	e8ac000c 	stmia	r12!, {r2, r3}
+  94:	e067300c 	rsb	r3, r7, r12
+  98:	e1540003 	cmp	r4, r3
+  9c:	e1a0200c 	mov	r2, r12
+  a0:	1afffff9 	bne	8c <H_CHAR_RES+0x3c>
+  a4:	e515e004 	ldr	lr, [r5, #-4]
+  a8:	e35e0000 	cmp	lr, #0
+  ac:	11a03002 	movne	r3, r2
+  b0:	0a000003 	beq	c4 <H_CHAR_RES+0x74>
+  b4:	e8a30003 	stmia	r3!, {r0, r1}
+  b8:	e062c003 	rsb	r12, r2, r3
+  bc:	e15e000c 	cmp	lr, r12
+  c0:	1afffffb 	bne	b4 <H_CHAR_RES+0x64>
+  c4:	e2466001 	sub	r6, r6, #1
+  c8:	e3760001 	cmn	r6, #1
+  cc:	e2855014 	add	r5, r5, #20
+  d0:	1affffe3 	bne	64 <H_CHAR_RES+0x14>
+  d4:	eb00025f 	bl	a58 <__cs3_premain>
+  d8:	00000001 	.word	0x00000001
+  dc:	00000bbc 	.word	0x00000bbc
+
+000000e0 <__cs3_start_asm_sim>:
+  e0:	e28f103c 	add	r1, pc, #60	; 0x3c
+  e4:	e3a00016 	mov	r0, #22
+  e8:	ef123456 	svc	0x00123456
+  ec:	e3500000 	cmp	r0, #0
+  f0:	ba000008 	blt	118 <V_PIXEL_RES+0x28>
+  f4:	e59f2028 	ldr	r2, [pc, #40]	; 124 <__cs3_heap_start_ptr>
+  f8:	e59fd01c 	ldr	sp, [pc, #28]	; 11c <V_PIXEL_RES+0x2c>
+  fc:	e5920008 	ldr	r0, [r2, #8]
+ 100:	e3500000 	cmp	r0, #0
+ 104:	11a0d000 	movne	sp, r0
+ 108:	e59f1010 	ldr	r1, [pc, #16]	; 120 <V_PIXEL_RES+0x30>
+ 10c:	e5920004 	ldr	r0, [r2, #4]
+ 110:	e3500000 	cmp	r0, #0
+ 114:	15810000 	strne	r0, [r1]
+ 118:	eaffffc9 	b	44 <__cs3_start_c>
+ 11c:	3ffffff8 	.word	0x3ffffff8
+ 120:	00000ff8 	.word	0x00000ff8
+
+00000124 <__cs3_heap_start_ptr>:
+ 124:	00001020 	.word	0x00001020
+
+00000128 <_start>:
+ 128:	e51fd000 	ldr	sp, [pc, #-0]	; 130 <_start+0x8>
+ 12c:	eaffffc4 	b	44 <__cs3_start_c>
+ 130:	3ffffff8 	.word	0x3ffffff8
+
+00000134 <deregister_tm_clones>:
+ 134:	e92d4008 	push	{r3, lr}
+ 138:	e59f002c 	ldr	r0, [pc, #44]	; 16c <H_PIXEL_RES+0x2c>
+ 13c:	e59f302c 	ldr	r3, [pc, #44]	; 170 <H_PIXEL_RES+0x30>
+ 140:	e0603003 	rsb	r3, r0, r3
+ 144:	e3530006 	cmp	r3, #6
+ 148:	8a000001 	bhi	154 <H_PIXEL_RES+0x14>
+ 14c:	e8bd4008 	pop	{r3, lr}
+ 150:	e12fff1e 	bx	lr
+ 154:	e59f3018 	ldr	r3, [pc, #24]	; 174 <H_PIXEL_RES+0x34>
+ 158:	e3530000 	cmp	r3, #0
+ 15c:	0afffffa 	beq	14c <H_PIXEL_RES+0xc>
+ 160:	e1a0e00f 	mov	lr, pc
+ 164:	e12fff13 	bx	r3
+ 168:	eafffff7 	b	14c <H_PIXEL_RES+0xc>
+ 16c:	00001000 	.word	0x00001000
+ 170:	00001003 	.word	0x00001003
+ 174:	00000000 	.word	0x00000000
+
+00000178 <register_tm_clones>:
+ 178:	e92d4008 	push	{r3, lr}
+ 17c:	e59f0034 	ldr	r0, [pc, #52]	; 1b8 <register_tm_clones+0x40>
+ 180:	e59f3034 	ldr	r3, [pc, #52]	; 1bc <register_tm_clones+0x44>
+ 184:	e0603003 	rsb	r3, r0, r3
+ 188:	e1a03143 	asr	r3, r3, #2
+ 18c:	e0833fa3 	add	r3, r3, r3, lsr #31
+ 190:	e1b010c3 	asrs	r1, r3, #1
+ 194:	1a000001 	bne	1a0 <register_tm_clones+0x28>
+ 198:	e8bd4008 	pop	{r3, lr}
+ 19c:	e12fff1e 	bx	lr
+ 1a0:	e59f2018 	ldr	r2, [pc, #24]	; 1c0 <register_tm_clones+0x48>
+ 1a4:	e3520000 	cmp	r2, #0
+ 1a8:	0afffffa 	beq	198 <register_tm_clones+0x20>
+ 1ac:	e1a0e00f 	mov	lr, pc
+ 1b0:	e12fff12 	bx	r2
+ 1b4:	eafffff7 	b	198 <register_tm_clones+0x20>
+ 1b8:	00001000 	.word	0x00001000
+ 1bc:	00001000 	.word	0x00001000
+ 1c0:	00000000 	.word	0x00000000
+
+000001c4 <__do_global_dtors_aux>:
+ 1c4:	e92d4010 	push	{r4, lr}
+ 1c8:	e59f402c 	ldr	r4, [pc, #44]	; 1fc <__do_global_dtors_aux+0x38>
+ 1cc:	e5d43000 	ldrb	r3, [r4]
+ 1d0:	e3530000 	cmp	r3, #0
+ 1d4:	1a000006 	bne	1f4 <__do_global_dtors_aux+0x30>
+ 1d8:	ebffffd5 	bl	134 <deregister_tm_clones>
+ 1dc:	e59f301c 	ldr	r3, [pc, #28]	; 200 <__do_global_dtors_aux+0x3c>
+ 1e0:	e3530000 	cmp	r3, #0
+ 1e4:	159f0018 	ldrne	r0, [pc, #24]	; 204 <__do_global_dtors_aux+0x40>
+ 1e8:	1320f000 	nopne	{0}
+ 1ec:	e3a03001 	mov	r3, #1
+ 1f0:	e5c43000 	strb	r3, [r4]
+ 1f4:	e8bd4010 	pop	{r4, lr}
+ 1f8:	e12fff1e 	bx	lr
+ 1fc:	00001000 	.word	0x00001000
+ 200:	00000000 	.word	0x00000000
+ 204:	00000b60 	.word	0x00000b60
+
+00000208 <frame_dummy>:
+ 208:	e92d4008 	push	{r3, lr}
+ 20c:	e59f3034 	ldr	r3, [pc, #52]	; 248 <frame_dummy+0x40>
+ 210:	e3530000 	cmp	r3, #0
+ 214:	159f0030 	ldrne	r0, [pc, #48]	; 24c <frame_dummy+0x44>
+ 218:	159f1030 	ldrne	r1, [pc, #48]	; 250 <frame_dummy+0x48>
+ 21c:	1320f000 	nopne	{0}
+ 220:	e59f002c 	ldr	r0, [pc, #44]	; 254 <frame_dummy+0x4c>
+ 224:	e5903000 	ldr	r3, [r0]
+ 228:	e3530000 	cmp	r3, #0
+ 22c:	0a000003 	beq	240 <frame_dummy+0x38>
+ 230:	e59f3020 	ldr	r3, [pc, #32]	; 258 <frame_dummy+0x50>
+ 234:	e3530000 	cmp	r3, #0
+ 238:	11a0e00f 	movne	lr, pc
+ 23c:	112fff13 	bxne	r3
+ 240:	e8bd4008 	pop	{r3, lr}
+ 244:	eaffffcb 	b	178 <register_tm_clones>
+ 248:	00000000 	.word	0x00000000
+ 24c:	00000b60 	.word	0x00000b60
+ 250:	00001004 	.word	0x00001004
+ 254:	00000bc0 	.word	0x00000bc0
+ 258:	00000000 	.word	0x00000000
+
+0000025c <test_char>:
+#include <stdio.h> 
+
+
+void test_char() {
+ 25c:	e92d40f8 	push	{r3, r4, r5, r6, r7, lr}
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+ 260:	e3a05000 	mov	r5, #0
+#include <stdio.h> 
+
+
+void test_char() {
+	int x, y;
+	char c = 0;
+ 264:	e1a06005 	mov	r6, r5
+#include <stdio.h> 
+
+
+void test_char() {
+ 268:	e1a07005 	mov	r7, r5
+ 26c:	ea00000c 	b	2a4 <test_char+0x48>
+ 270:	e0862004 	add	r2, r6, r4
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+		for (x = 0; x <= 79; x++)
+			VGA_write_char_ASM(x, y, c++);
+ 274:	e1a00004 	mov	r0, r4
+ 278:	e1a01005 	mov	r1, r5
+ 27c:	e6ef2072 	uxtb	r2, r2
+ 280:	eb0000af 	bl	544 <VGA_write_char_ASM>
+void test_char() {
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+		for (x = 0; x <= 79; x++)
+ 284:	e2844001 	add	r4, r4, #1
+ 288:	e3540050 	cmp	r4, #80	; 0x50
+ 28c:	1afffff7 	bne	270 <test_char+0x14>
+ 290:	e2866050 	add	r6, r6, #80	; 0x50
+ 294:	e6ef6076 	uxtb	r6, r6
+
+void test_char() {
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+ 298:	e2855001 	add	r5, r5, #1
+ 29c:	e355003b 	cmp	r5, #59	; 0x3b
+ 2a0:	08bd80f8 	popeq	{r3, r4, r5, r6, r7, pc}
+#include <stdio.h> 
+
+
+void test_char() {
+ 2a4:	e1a04007 	mov	r4, r7
+ 2a8:	eafffff0 	b	270 <test_char+0x14>
+
+000002ac <test_byte>:
+		for (x = 0; x <= 79; x++)
+			VGA_write_char_ASM(x, y, c++);
+	
+}
+
+void test_byte() {
+ 2ac:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+ 2b0:	e3a06000 	mov	r6, #0
+	
+}
+
+void test_byte() {
+	int x, y;
+	char c = 0;
+ 2b4:	e1a07006 	mov	r7, r6
+		for (x = 0; x <= 79; x++)
+			VGA_write_char_ASM(x, y, c++);
+	
+}
+
+void test_byte() {
+ 2b8:	e1a08006 	mov	r8, r6
+ 2bc:	ea00000d 	b	2f8 <test_byte+0x4c>
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+		for (x = 0; x <= 79; x+=3)
+			VGA_write_byte_ASM(x, y, c++);
+ 2c0:	e1a02005 	mov	r2, r5
+ 2c4:	e2855001 	add	r5, r5, #1
+ 2c8:	e6ef5075 	uxtb	r5, r5
+ 2cc:	e1a00004 	mov	r0, r4
+ 2d0:	e1a01006 	mov	r1, r6
+ 2d4:	eb0000ae 	bl	594 <VGA_write_byte_ASM>
+void test_byte() {
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+		for (x = 0; x <= 79; x+=3)
+ 2d8:	e2844003 	add	r4, r4, #3
+ 2dc:	e3540051 	cmp	r4, #81	; 0x51
+ 2e0:	1afffff6 	bne	2c0 <test_byte+0x14>
+ 2e4:	e287701b 	add	r7, r7, #27
+ 2e8:	e6ef7077 	uxtb	r7, r7
+
+void test_byte() {
+	int x, y;
+	char c = 0;
+
+	for (y = 0; y < 59; y++)
+ 2ec:	e2866001 	add	r6, r6, #1
+ 2f0:	e3570039 	cmp	r7, #57	; 0x39
+ 2f4:	08bd81f0 	popeq	{r4, r5, r6, r7, r8, pc}
+		for (x = 0; x <= 79; x++)
+			VGA_write_char_ASM(x, y, c++);
+	
+}
+
+void test_byte() {
+ 2f8:	e1a05007 	mov	r5, r7
+ 2fc:	e1a04008 	mov	r4, r8
+ 300:	eaffffee 	b	2c0 <test_byte+0x14>
+
+00000304 <test_pixel>:
+		for (x = 0; x <= 79; x+=3)
+			VGA_write_byte_ASM(x, y, c++);
+
+}
+
+void test_pixel() {
+ 304:	e92d40f8 	push	{r3, r4, r5, r6, r7, lr}
+	int x, y;
+	unsigned short colour = 0;
+
+	for (y = 0; y < 239; y++)
+ 308:	e3a06000 	mov	r6, #0
+
+}
+
+void test_pixel() {
+	int x, y;
+	unsigned short colour = 0;
+ 30c:	e1a05006 	mov	r5, r6
+		for (x = 0; x <= 79; x+=3)
+			VGA_write_byte_ASM(x, y, c++);
+
+}
+
+void test_pixel() {
+ 310:	e1a07006 	mov	r7, r6
+ 314:	ea00000c 	b	34c <test_pixel+0x48>
+ 318:	e0852004 	add	r2, r5, r4
+	int x, y;
+	unsigned short colour = 0;
+
+	for (y = 0; y < 239; y++)
+		for (x = 0; x <= 319; x++)
+			VGA_draw_point_ASM(x,y,colour++);
+ 31c:	e1a00004 	mov	r0, r4
+ 320:	e1a01006 	mov	r1, r6
+ 324:	e6ff2072 	uxth	r2, r2
+ 328:	eb0000a6 	bl	5c8 <VGA_draw_point_ASM>
+void test_pixel() {
+	int x, y;
+	unsigned short colour = 0;
+
+	for (y = 0; y < 239; y++)
+		for (x = 0; x <= 319; x++)
+ 32c:	e2844001 	add	r4, r4, #1
+ 330:	e3540d05 	cmp	r4, #320	; 0x140
+ 334:	1afffff7 	bne	318 <test_pixel+0x14>
+ 338:	e2855d05 	add	r5, r5, #320	; 0x140
+ 33c:	e6ff5075 	uxth	r5, r5
+
+void test_pixel() {
+	int x, y;
+	unsigned short colour = 0;
+
+	for (y = 0; y < 239; y++)
+ 340:	e2866001 	add	r6, r6, #1
+ 344:	e3550dab 	cmp	r5, #10944	; 0x2ac0
+ 348:	08bd80f8 	popeq	{r3, r4, r5, r6, r7, pc}
+		for (x = 0; x <= 79; x+=3)
+			VGA_write_byte_ASM(x, y, c++);
+
+}
+
+void test_pixel() {
+ 34c:	e1a04007 	mov	r4, r7
+ 350:	eafffff0 	b	318 <test_pixel+0x14>
+
+00000354 <VGA_Test>:
+		for (x = 0; x <= 319; x++)
+			VGA_draw_point_ASM(x,y,colour++);
+
+}
+
+void VGA_Test(){
+ 354:	e92d4008 	push	{r3, lr}
+	while(1){
+		if(read_PB_data_ASM() == 1){
+ 358:	eb0000a8 	bl	600 <read_PB_data_ASM>
+ 35c:	e3500001 	cmp	r0, #1
+ 360:	1a000006 	bne	380 <VGA_Test+0x2c>
+			if(read_slider_switches_ASM() == 0) {
+ 364:	eb0000c9 	bl	690 <read_slider_switches_ASM>
+ 368:	e3500000 	cmp	r0, #0
+ 36c:	1a000001 	bne	378 <VGA_Test+0x24>
+				test_char();
+ 370:	ebffffb9 	bl	25c <test_char>
+ 374:	eafffff7 	b	358 <VGA_Test+0x4>
+			}
+			else {
+				test_byte();
+ 378:	ebffffcb 	bl	2ac <test_byte>
+ 37c:	eafffff5 	b	358 <VGA_Test+0x4>
+			}
+		}
+		else if (read_PB_data_ASM() == 2) {
+ 380:	eb00009e 	bl	600 <read_PB_data_ASM>
+ 384:	e3500002 	cmp	r0, #2
+ 388:	1a000001 	bne	394 <VGA_Test+0x40>
+			test_pixel();
+ 38c:	ebffffdc 	bl	304 <test_pixel>
+ 390:	eafffff0 	b	358 <VGA_Test+0x4>
+		}
+		else if (read_PB_data_ASM() == 4) {
+ 394:	eb000099 	bl	600 <read_PB_data_ASM>
+ 398:	e3500004 	cmp	r0, #4
+ 39c:	1a000001 	bne	3a8 <VGA_Test+0x54>
+			VGA_clear_charbuff_ASM();
+ 3a0:	eb00003a 	bl	490 <VGA_clear_charbuff_ASM>
+ 3a4:	eaffffeb 	b	358 <VGA_Test+0x4>
+		}
+		else if (read_PB_data_ASM() == 8) {
+ 3a8:	eb000094 	bl	600 <read_PB_data_ASM>
+ 3ac:	e3500008 	cmp	r0, #8
+ 3b0:	1affffe8 	bne	358 <VGA_Test+0x4>
+			VGA_clear_pixelbuff_ASM();
+ 3b4:	eb00004b 	bl	4e8 <VGA_clear_pixelbuff_ASM>
+ 3b8:	eaffffe6 	b	358 <VGA_Test+0x4>
+
+000003bc <ps2_Test>:
+		}
+	}
+}
+
+void ps2_Test(){
+ 3bc:	e92d4070 	push	{r4, r5, r6, lr}
+ 3c0:	e24dd008 	sub	sp, sp, #8
+	VGA_clear_charbuff_ASM();
+ 3c4:	eb000031 	bl	490 <VGA_clear_charbuff_ASM>
+	VGA_clear_pixelbuff_ASM();
+ 3c8:	eb000046 	bl	4e8 <VGA_clear_pixelbuff_ASM>
+
+	char val;
+	int x=0;
+	int y=0;
+ 3cc:	e3a05000 	mov	r5, #0
+void ps2_Test(){
+	VGA_clear_charbuff_ASM();
+	VGA_clear_pixelbuff_ASM();
+
+	char val;
+	int x=0;
+ 3d0:	e1a04005 	mov	r4, r5
+			x+=xSpace;
+			if(x >= maximum[0]){ // Checks if row is completed
+				x=0; 
+				y++;
+				if(y >= maximum[1]){
+					y=0;
+ 3d4:	e1a06005 	mov	r6, r5
+ 3d8:	ea000000 	b	3e0 <ps2_Test+0x24>
+	while(1){
+		if(read_PS2_data_ASM(&val)!=0){
+			VGA_write_byte_ASM(x,y,val);
+			x+=xSpace;
+			if(x >= maximum[0]){ // Checks if row is completed
+				x=0; 
+ 3dc:	e1a04006 	mov	r4, r6
+	int y=0;
+	int xSpace = 3;
+	int maximum[] = {80, 60};
+
+	while(1){
+		if(read_PS2_data_ASM(&val)!=0){
+ 3e0:	e28d0007 	add	r0, sp, #7
+ 3e4:	eb0000ad 	bl	6a0 <read_PS2_data_ASM>
+ 3e8:	e3500000 	cmp	r0, #0
+ 3ec:	0afffffb 	beq	3e0 <ps2_Test+0x24>
+			VGA_write_byte_ASM(x,y,val);
+ 3f0:	e1a00004 	mov	r0, r4
+ 3f4:	e1a01005 	mov	r1, r5
+ 3f8:	e5dd2007 	ldrb	r2, [sp, #7]
+ 3fc:	eb000064 	bl	594 <VGA_write_byte_ASM>
+			x+=xSpace;
+ 400:	e2844003 	add	r4, r4, #3
+			if(x >= maximum[0]){ // Checks if row is completed
+ 404:	e354004f 	cmp	r4, #79	; 0x4f
+ 408:	dafffff4 	ble	3e0 <ps2_Test+0x24>
+				x=0; 
+				y++;
+ 40c:	e2855001 	add	r5, r5, #1
+				if(y >= maximum[1]){
+ 410:	e355003b 	cmp	r5, #59	; 0x3b
+ 414:	dafffff0 	ble	3dc <ps2_Test+0x20>
+					y=0;
+					VGA_clear_charbuff_ASM();
+ 418:	eb00001c 	bl	490 <VGA_clear_charbuff_ASM>
+			x+=xSpace;
+			if(x >= maximum[0]){ // Checks if row is completed
+				x=0; 
+				y++;
+				if(y >= maximum[1]){
+					y=0;
+ 41c:	e1a05006 	mov	r5, r6
+	while(1){
+		if(read_PS2_data_ASM(&val)!=0){
+			VGA_write_byte_ASM(x,y,val);
+			x+=xSpace;
+			if(x >= maximum[0]){ // Checks if row is completed
+				x=0; 
+ 420:	e1a04006 	mov	r4, r6
+ 424:	eaffffed 	b	3e0 <ps2_Test+0x24>
+
+00000428 <audio_Test>:
+		}
+	}
+
+}
+
+void audio_Test(){
+ 428:	e92d4070 	push	{r4, r5, r6, lr}
+	while(1){
+
+		// 48K samples/s / 100samples/s = 480 samples per period
+		// 480 samples per period / 2 = 240 
+
+		for(i=0;i<240;i++){
+ 42c:	e3a04000 	mov	r4, #0
+		
+			if(write_audio_FIFO_ASM(0x00FFFFFF) !=1){
+ 430:	e3e064ff 	mvn	r6, #-16777216	; 0xff000000
+	while(1){
+
+		// 48K samples/s / 100samples/s = 480 samples per period
+		// 480 samples per period / 2 = 240 
+
+		for(i=0;i<240;i++){
+ 434:	e1a05004 	mov	r5, r4
+ 438:	ea000004 	b	450 <audio_Test+0x28>
+		
+			if(write_audio_FIFO_ASM(0x00FFFFFF) !=1){
+ 43c:	e1a00006 	mov	r0, r6
+ 440:	eb0000a6 	bl	6e0 <write_audio_FIFO_ASM>
+ 444:	e3500001 	cmp	r0, #1
+				i--;
+ 448:	12444001 	subne	r4, r4, #1
+	while(1){
+
+		// 48K samples/s / 100samples/s = 480 samples per period
+		// 480 samples per period / 2 = 240 
+
+		for(i=0;i<240;i++){
+ 44c:	e2844001 	add	r4, r4, #1
+ 450:	e35400ef 	cmp	r4, #239	; 0xef
+ 454:	dafffff8 	ble	43c <audio_Test+0x14>
+ 458:	e1a04005 	mov	r4, r5
+				i--;
+			}
+		}
+		for(i=0;i<240;i++){
+			
+			if(write_audio_FIFO_ASM(0x00000000) !=1){
+ 45c:	e1a00005 	mov	r0, r5
+ 460:	eb00009e 	bl	6e0 <write_audio_FIFO_ASM>
+ 464:	e3500001 	cmp	r0, #1
+				i--;
+ 468:	12444001 	subne	r4, r4, #1
+		
+			if(write_audio_FIFO_ASM(0x00FFFFFF) !=1){
+				i--;
+			}
+		}
+		for(i=0;i<240;i++){
+ 46c:	e2844001 	add	r4, r4, #1
+ 470:	e35400ef 	cmp	r4, #239	; 0xef
+ 474:	dafffff8 	ble	45c <audio_Test+0x34>
+	while(1){
+
+		// 48K samples/s / 100samples/s = 480 samples per period
+		// 480 samples per period / 2 = 240 
+
+		for(i=0;i<240;i++){
+ 478:	e1a04005 	mov	r4, r5
+ 47c:	eafffff3 	b	450 <audio_Test+0x28>
+
+00000480 <main>:
+		}
+		
+	}
+}
+
+int main(){
+ 480:	e92d4008 	push	{r3, lr}
+	VGA_clear_charbuff_ASM();
+ 484:	eb000001 	bl	490 <VGA_clear_charbuff_ASM>
+	VGA_clear_pixelbuff_ASM();
+ 488:	eb000016 	bl	4e8 <VGA_clear_pixelbuff_ASM>
+
+	//VGA_Test();
+	//ps2_Test();
+	audio_Test();
+ 48c:	ebffffe5 	bl	428 <audio_Test>
+
+00000490 <VGA_clear_charbuff_ASM>:
+	OFST .req R6
+
+/* VGA_clear_charbuff_ASM: Clears the entire char buffer to 0
+*/
+VGA_clear_charbuff_ASM:
+						PUSH {R0-R10,LR} 		// PUSH the state for the function call
+ 490:	e92d47ff 	push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+						LDR R2, =CHAR_BUFF 		// Holds  the location of the CHAR BUFFER
+ 494:	e3a024c9 	mov	r2, #-922746880	; 0xc9000000
+						MOV R3, #0  			// R3 = X counter
+ 498:	e3a03000 	mov	r3, #0
+						MOV R4, #-1   			// R4 = Y counter 
+ 49c:	e3e04000 	mvn	r4, #0
+					    MOV R7, #0 				// R7 = 0 (Final Character address)
+ 4a0:	e3a07000 	mov	r7, #0
+						MOV R8, #0 				// Holds an empty value
+ 4a4:	e3a08000 	mov	r8, #0
+						LDR R9,  =H_CHAR_RES	// Horizontal resolution
+ 4a8:	e3a09050 	mov	r9, #80	; 0x50
+						LDR R10, =V_CHAR_RES	// Verticle resolution		
+ 4ac:	e3a0a03c 	mov	r10, #60	; 0x3c
+
+000004b0 <CLEAR_CHARY_LOOP>:
+CLEAR_CHARY_LOOP:
+						ADD R4,R4, #1 			//Increment the Y value
+ 4b0:	e2844001 	add	r4, r4, #1
+						CMP R4, R10 			// if (y == V_CHAR_RES)
+ 4b4:	e154000a 	cmp	r4, r10
+						BEQ COMPLETE_CHAR_LOOP  //		GOTO: COMPLETE_CHAR_LOOP
+ 4b8:	0a000008 	beq	4e0 <COMPLETE_CHAR_LOOP>
+						MOV R3, #0 				// X = 0
+ 4bc:	e3a03000 	mov	r3, #0
+
+000004c0 <CLEAR_CHARX_LOOP>:
+
+CLEAR_CHARX_LOOP:
+						CMP R3, R9  			// if (x == H_CHAR_RES)
+ 4c0:	e1530009 	cmp	r3, r9
+						BEQ CLEAR_CHARY_LOOP	//		GOTO: CLEAR_CHARY_LOOP
+ 4c4:	0afffff9 	beq	4b0 <CLEAR_CHARY_LOOP>
+						LSL R6, R4, #7			// R6 = y << 7
+ 4c8:	e1a06384 	lsl	r6, r4, #7
+						ORR R6, R6, R3			// R6 |= x (R6 is the offset)
+ 4cc:	e1866003 	orr	r6, r6, r3
+						ADD R7, R2, R6			// R7 = R2 (CHAR_BUFF) + R6 (OFFSET)
+ 4d0:	e0827006 	add	r7, r2, r6
+						STRB R8, [R7]    		// Store 0 at the char address
+ 4d4:	e5c78000 	strb	r8, [r7]
+						ADD R3,R3,#1			// x++
+ 4d8:	e2833001 	add	r3, r3, #1
+						B CLEAR_CHARX_LOOP		// GOTO: CLEAR_CHARX_LOOP
+ 4dc:	eafffff7 	b	4c0 <CLEAR_CHARX_LOOP>
+
+000004e0 <COMPLETE_CHAR_LOOP>:
+COMPLETE_CHAR_LOOP:
+						POP {R0-R10,LR}			// Restore state
+ 4e0:	e8bd47ff 	pop	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+						BX LR
+ 4e4:	e12fff1e 	bx	lr
+
+000004e8 <VGA_clear_pixelbuff_ASM>:
+
+
+/* VGA_clear_pixelbuff_ASM: Clears the entire pixel buffer to 0
+*/
+VGA_clear_pixelbuff_ASM:
+					PUSH {R0-R10,LR} 		// PUSH the state for the function call
+ 4e8:	e92d47ff 	push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+					LDR R2, =PIXEL_BUFF 	// Holds  the location of the PIXEL_BUFFER
+ 4ec:	e3a02332 	mov	r2, #-939524096	; 0xc8000000
+					MOV R3, #0  			// R3 = X counter
+ 4f0:	e3a03000 	mov	r3, #0
+					MOV R4, #-1   			// R4 = Y counter 
+ 4f4:	e3e04000 	mvn	r4, #0
+					MOV R7, #0 				// R7 = 0 (Final Character address)
+ 4f8:	e3a07000 	mov	r7, #0
+					MOV R8, #0 				// Holds empty value
+ 4fc:	e3a08000 	mov	r8, #0
+					LDR R9,  =H_PIXEL_RES	// Horizontal resolution
+ 500:	e3a09d05 	mov	r9, #320	; 0x140
+					LDR R10, =V_PIXEL_RES	// Verticle resolution
+ 504:	e3a0a0f0 	mov	r10, #240	; 0xf0
+
+00000508 <CLEAR_PIXELY_LOOP>:
+CLEAR_PIXELY_LOOP:  
+					ADD R4, R4, #1 			// y++
+ 508:	e2844001 	add	r4, r4, #1
+					CMP R4, R10 			// if (y == V_PIXEL_RES)
+ 50c:	e154000a 	cmp	r4, r10
+					BEQ COMPLETE_PIXEL_LOOP // 		GOTO: COMPLETE_PIXEL_LOOP
+ 510:	0a000009 	beq	53c <COMPLETE_PIXEL_LOOP>
+					MOV R3, #0 				// New Y row, reset the value
+ 514:	e3a03000 	mov	r3, #0
+
+00000518 <CLEAR_PIXELX_LOOP>:
+
+CLEAR_PIXELX_LOOP:
+					CMP R3, R9  			// if (x == H_PIXEX_RES)
+ 518:	e1530009 	cmp	r3, r9
+					BEQ CLEAR_PIXELY_LOOP	// 		GOTO: CLEAR_PIXELY_LOOP
+ 51c:	0afffff9 	beq	508 <CLEAR_PIXELY_LOOP>
+					LSL R6, R4, #10			//	R6 = y << 10;	 
+ 520:	e1a06504 	lsl	r6, r4, #10
+					LSL R7, R3, #1			//	R7 = x << 1;
+ 524:	e1a07083 	lsl	r7, r3, #1
+					ORR R6, R6, R7			//  R6 |= R7 (Add shifted x and y). R6 is the offset
+ 528:	e1866007 	orr	r6, r6, r7
+					ADD R7, R2, R6			//  R7 = R0 (PIXEL_BUFF) + R6 (Offset). R7 is the address for a given x,y
+ 52c:	e0827006 	add	r7, r2, r6
+					STRH R8, [R7]    		//	*R7 = 0 
+ 530:	e1c780b0 	strh	r8, [r7]
+					ADD R3, R3, #1			// x++
+ 534:	e2833001 	add	r3, r3, #1
+					B CLEAR_PIXELX_LOOP		// GOTO: CLEAR+_PIXELX_LOOP
+ 538:	eafffff6 	b	518 <CLEAR_PIXELX_LOOP>
+
+0000053c <COMPLETE_PIXEL_LOOP>:
+
+COMPLETE_PIXEL_LOOP:
+					POP {R0-R10,LR}		    // Pop state of stack
+ 53c:	e8bd47ff 	pop	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+					BX LR					// Branch to link register
+ 540:	e12fff1e 	bx	lr
+
+00000544 <VGA_write_char_ASM>:
+	R0 -> int x
+	R1 -> int y
+	R2 -> char c
+*/
+VGA_write_char_ASM:
+					PUSH {R0-R10,LR}		// Store state
+ 544:	e92d47ff 	push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+					LDR R3, =H_CHAR_RES		// R3 = H_CHAR_RES
+ 548:	e3a03050 	mov	r3, #80	; 0x50
+					LDR R4, =V_CHAR_RES		// R4 = H_CHAR_RES
+ 54c:	e3a0403c 	mov	r4, #60	; 0x3c
+					LDR R5, =CHAR_BUFF		// R5 = CHAR_BUFF
+ 550:	e3a054c9 	mov	r5, #-922746880	; 0xc9000000
+
+					// Defensive checks:
+					CMP R0, R3 				// if (x >= H_CHAR_RES)
+ 554:	e1500003 	cmp	r0, r3
+					BGE COMPLETE_WRITE_CHAR //		GOTO: COMPLETE_WRITE_CHAR
+ 558:	aa00000b 	bge	58c <COMPLETE_WRITE_CHAR>
+					CMP R0, #0				// if (x < 0)
+ 55c:	e3500000 	cmp	r0, #0
+					BLT COMPLETE_WRITE_CHAR //		GOTO: COMPLETE_WRITE_CHAR
+ 560:	ba000009 	blt	58c <COMPLETE_WRITE_CHAR>
+					CMP R1, R4 				// if (y >= V_CHAR_RES)
+ 564:	e1510004 	cmp	r1, r4
+					BGE COMPLETE_WRITE_CHAR //		GOTO: COMPLETE_WRITE_CHAR
+ 568:	aa000007 	bge	58c <COMPLETE_WRITE_CHAR>
+					CMP R1, #0				// if (y < 0)
+ 56c:	e3510000 	cmp	r1, #0
+					BLT COMPLETE_WRITE_CHAR //		GOTO: COMPLETE_WRITE_CHAR
+ 570:	ba000005 	blt	58c <COMPLETE_WRITE_CHAR>
+
+					MOV R3, #0 //Y offset
+ 574:	e3a03000 	mov	r3, #0
+					MOV R4, #7 //X offset
+ 578:	e3a04007 	mov	r4, #7
+
+					LSL R6, R1, #7			// R6 = y << 7 
+ 57c:	e1a06381 	lsl	r6, r1, #7
+					ORR R6, R6, R0			// R6 |= x (R6 is the offset)
+ 580:	e1866000 	orr	r6, r6, r0
+					ADD R7, R5, R6			// R7 = R5 (CHAR_BUFF) + R6 (OFFSET) 
+ 584:	e0857006 	add	r7, r5, r6
+					STRB R2, [R7] 			// Store charachter at address
+ 588:	e5c72000 	strb	r2, [r7]
+
+0000058c <COMPLETE_WRITE_CHAR>:
+
+COMPLETE_WRITE_CHAR:
+					POP {R0-R10,LR}
+ 58c:	e8bd47ff 	pop	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, lr}
+					BX LR
+ 590:	e12fff1e 	bx	lr
+
+00000594 <VGA_write_byte_ASM>:
+	R0 -> int x
+	R1 -> int y
+	R2 -> char byte
+*/
+VGA_write_byte_ASM:
+					PUSH {R4-R10,LR}	 	// Store the state
+ 594:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, r10, lr}
+					LDR R5, =CHAR_IN_HEX	// Points to the first character 
+ 598:	e59f505c 	ldr	r5, [pc, #92]	; 5fc <CHAR_IN_HEX+0x10>
+					MOV R3, R2				// R3 = R2 (read-only copy)  
+ 59c:	e1a03002 	mov	r3, r2
+					LSR R2, R3, #4			// R2 = R3 >> 4 (Remove the first 4 bits)
+ 5a0:	e1a02223 	lsr	r2, r3, #4
+					AND R2, R2, #15			// R2 &= (1111) (Get last 4 bits of byte). R3 will range from
+ 5a4:	e202200f 	and	r2, r2, #15
+											// 0 (0000) to 15 (1111 or F)
+					LDRB R2, [R5, R2]		// R2 = *(R5 + R2) (Get ascii character code)
+ 5a8:	e7d52002 	ldrb	r2, [r5, r2]
+					BL VGA_write_char_ASM	// Write the character
+ 5ac:	ebffffe4 	bl	544 <VGA_write_char_ASM>
+					AND R2, R3, #15			// Get first 4 bits of byte
+ 5b0:	e203200f 	and	r2, r3, #15
+					LDRB R2, [R5, R2]		// R2 = *(R5 + R2) (Get ascii character code)
+ 5b4:	e7d52002 	ldrb	r2, [r5, r2]
+					ADD R0, R0, #1 			// x = x + 1 
+ 5b8:	e2800001 	add	r0, r0, #1
+					BL VGA_write_char_ASM	// Write the character
+ 5bc:	ebffffe0 	bl	544 <VGA_write_char_ASM>
+
+					POP {R4-R10,LR}
+ 5c0:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, r10, lr}
+					BX LR
+ 5c4:	e12fff1e 	bx	lr
+
+000005c8 <VGA_draw_point_ASM>:
+	R0 -> int x
+	R1 -> int y
+	R2 -> short colour
+*/
+VGA_draw_point_ASM:
+					PUSH {R4-R10,LR}		// Store the state
+ 5c8:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, r10, lr}
+					LDR R5, =PIXEL_BUFF 	// Holds  the location of the PIXEL_BUFFER
+ 5cc:	e3a05332 	mov	r5, #-939524096	; 0xc8000000
+
+					LSL R6, R1, #10			//	R6 = y << 10;	 
+ 5d0:	e1a06501 	lsl	r6, r1, #10
+					LSL R9, R0, #1			//	R9 = x << 1;
+ 5d4:	e1a09080 	lsl	r9, r0, #1
+					ORR R6, R6, R9			//  R6 |= R9 (Add shifted x and y). R6 is the offset
+ 5d8:	e1866009 	orr	r6, r6, r9
+					ADD R7, R5, R6			//  R7 = R5 (PIXEL_BUFF) + R6 (Offset). R7 is the address for a given x,y 
+ 5dc:	e0857006 	add	r7, r5, r6
+					STRH R2, [R7]			//  *R7 = R2
+ 5e0:	e1c720b0 	strh	r2, [r7]
+
+					POP {R4-R10,LR}
+ 5e4:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, r10, lr}
+					BX LR
+ 5e8:	e12fff1e 	bx	lr
+
+000005ec <CHAR_IN_HEX>:
+ 5ec:	33323130 	.word	0x33323130
+ 5f0:	37363534 	.word	0x37363534
+ 5f4:	42413938 	.word	0x42413938
+ 5f8:	46454443 	.word	0x46454443
+	R1 -> int y
+	R2 -> char byte
+*/
+VGA_write_byte_ASM:
+					PUSH {R4-R10,LR}	 	// Store the state
+					LDR R5, =CHAR_IN_HEX	// Points to the first character 
+ 5fc:	000005ec 	.word	0x000005ec
+
+00000600 <read_PB_data_ASM>:
+		.global enable_PB_INT_ASM, disable_PB_INT_ASM, 
+
+
+
+read_PB_data_ASM:
+					LDR R0, =PB_BASE
+ 600:	e59f0080 	ldr	r0, [pc, #128]	; 688 <disable_PB_INT_ASM+0x14>
+					LDR R0, [R0]
+ 604:	e5900000 	ldr	r0, [r0]
+					BX LR   					//Return to Link register
+ 608:	e12fff1e 	bx	lr
+
+0000060c <read_PB_edgecap_ASM>:
+
+read_PB_edgecap_ASM:
+					LDR R0,=PB_INT
+ 60c:	e59f0078 	ldr	r0, [pc, #120]	; 68c <disable_PB_INT_ASM+0x18>
+					LDR R0, [R0]				// Load Edgecapture register
+ 610:	e5900000 	ldr	r0, [r0]
+					AND R0, R0, #0xF			// Get lower 4 bits (Edge bits)
+ 614:	e200000f 	and	r0, r0, #15
+					BX LR 						//Return to Link register
+ 618:	e12fff1e 	bx	lr
+
+0000061c <PB_data_is_pressed_ASM>:
+
+
+PB_data_is_pressed_ASM:
+					MOV R3, R0				// Copy R0
+ 61c:	e1a03000 	mov	r3, r0
+					MOV R0, #0 				//set to false by default
+ 620:	e3a00000 	mov	r0, #0
+					LDR R1, =PB_BASE	
+ 624:	e59f105c 	ldr	r1, [pc, #92]	; 688 <disable_PB_INT_ASM+0x14>
+					LDR R2, [R1]		
+ 628:	e5912000 	ldr	r2, [r1]
+					ANDS R2, R2, R3 		// R2 = R2 & R3
+ 62c:	e0122003 	ands	r2, r2, r3
+					MOVEQ R0, #1 			// If R2
+ 630:	03a00001 	moveq	r0, #1
+					BX LR    				//Return to Link register
+ 634:	e12fff1e 	bx	lr
+
+00000638 <PB_edgecap_is_pressed_ASM>:
+
+
+
+PB_edgecap_is_pressed_ASM:
+					MOV R3, R0
+ 638:	e1a03000 	mov	r3, r0
+					MOV R0, #0
+ 63c:	e3a00000 	mov	r0, #0
+					LDR R1, =PB_INT	
+ 640:	e59f1044 	ldr	r1, [pc, #68]	; 68c <disable_PB_INT_ASM+0x18>
+					LDR R1, [R1]	
+ 644:	e5911000 	ldr	r1, [r1]
+					ANDS R2, R1, R3				
+ 648:	e0112003 	ands	r2, r1, r3
+					MOVEQ R0, #1			
+ 64c:	03a00001 	moveq	r0, #1
+					BX LR
+ 650:	e12fff1e 	bx	lr
+
+00000654 <PB_clear_edgecap_ASM>:
+
+
+PB_clear_edgecap_ASM:
+					LDR R2, =PB_INT
+ 654:	e59f2030 	ldr	r2, [pc, #48]	; 68c <disable_PB_INT_ASM+0x18>
+					MOV R1, #0x7
+ 658:	e3a01007 	mov	r1, #7
+					STR R1, [R2]	
+ 65c:	e5821000 	str	r1, [r2]
+					BX LR
+ 660:	e12fff1e 	bx	lr
+
+00000664 <enable_PB_INT_ASM>:
+
+enable_PB_INT_ASM:
+					LDR R2, =PB_BASE	
+ 664:	e59f201c 	ldr	r2, [pc, #28]	; 688 <disable_PB_INT_ASM+0x14>
+					AND R1, R0, #0xF	
+ 668:	e200100f 	and	r1, r0, #15
+					STR R1, [R2, #0x8]	
+ 66c:	e5821008 	str	r1, [r2, #8]
+					BX LR
+ 670:	e12fff1e 	bx	lr
+
+00000674 <disable_PB_INT_ASM>:
+
+disable_PB_INT_ASM:
+					LDR R2, =PB_BASE	
+ 674:	e59f200c 	ldr	r2, [pc, #12]	; 688 <disable_PB_INT_ASM+0x14>
+					LDR R1, [R2, #0x8]	
+ 678:	e5921008 	ldr	r1, [r2, #8]
+					BIC R1, R1, R0		
+ 67c:	e1c11000 	bic	r1, r1, r0
+					STR R1, [R2, #0x8]	
+ 680:	e5821008 	str	r1, [r2, #8]
+					BX LR
+ 684:	e12fff1e 	bx	lr
+		.global enable_PB_INT_ASM, disable_PB_INT_ASM, 
+
+
+
+read_PB_data_ASM:
+					LDR R0, =PB_BASE
+ 688:	ff200050 	.word	0xff200050
+					LDR R0, [R0]
+					BX LR   					//Return to Link register
+
+read_PB_edgecap_ASM:
+					LDR R0,=PB_INT
+ 68c:	ff20005c 	.word	0xff20005c
+
+00000690 <read_slider_switches_ASM>:
+											// . word is like unsigned int in C
+											// See: https://stackoverflow.com/questions/21624155/difference-between-equ-and-word-in-arm-assembly
+		.global read_slider_switches_ASM
+
+read_slider_switches_ASM:
+		LDR R1, =SW_BASE
+ 690:	e59f1004 	ldr	r1, [pc, #4]	; 69c <read_slider_switches_ASM+0xc>
+		LDR R0, [R1]
+ 694:	e5910000 	ldr	r0, [r1]
+		BX LR
+ 698:	e12fff1e 	bx	lr
+											// . word is like unsigned int in C
+											// See: https://stackoverflow.com/questions/21624155/difference-between-equ-and-word-in-arm-assembly
+		.global read_slider_switches_ASM
+
+read_slider_switches_ASM:
+		LDR R1, =SW_BASE
+ 69c:	ff200040 	.word	0xff200040
+
+000006a0 <read_PS2_data_ASM>:
+/*read_PS2_data_ASM: Read data from the keyboard
+	-> R0 - char* data_to_be_read
+*/
+read_PS2_data_ASM: //Parameters R0 is the character pointer
+
+	PUSH {R4-R10}				// Store state
+ 6a0:	e92d07f0 	push	{r4, r5, r6, r7, r8, r9, r10}
+	LDR R2, =PS2_DATAREG		// Get PS2 data register address
+ 6a4:	e59f2030 	ldr	r2, [pc, #48]	; 6dc <read_PS2_data_ASM+0x3c>
+	LDR R1, [R2]				// Load in PS2 data register contents
+ 6a8:	e5921000 	ldr	r1, [r2]
+	MOV R3, #0x8000				// 16th bit (to get RVALID)
+ 6ac:	e3a03902 	mov	r3, #32768	; 0x8000
+	MOV R4, #0xFF				// 8 bit mask (to get Data)
+ 6b0:	e3a040ff 	mov	r4, #255	; 0xff
+	AND R5, R1, R3				// R5 = R1 (PS2_Data) & R3 (0x8000) [Get the RVALID bit]
+ 6b4:	e0015003 	and	r5, r1, r3
+	CMP R5, #0					// if (RVALID == 0)
+ 6b8:	e3550000 	cmp	r5, #0
+	MOVEQ R0, #0				// 	Return 0
+ 6bc:	03a00000 	moveq	r0, #0
+	POPEQ {R4-R10}
+ 6c0:	08bd07f0 	popeq	{r4, r5, r6, r7, r8, r9, r10}
+	BXEQ LR
+ 6c4:	012fff1e 	bxeq	lr
+
+	AND R6, R1, R4				// R6 = R1 (PS2_Data) & R4 (0xFF) [Get Data]
+ 6c8:	e0016004 	and	r6, r1, r4
+	STRB R6, [R0] 				// Store R6 data byte into the memory pointed to by R0 (data_to_be_read)
+ 6cc:	e5c06000 	strb	r6, [r0]
+	
+	POP {R4-R10}				
+ 6d0:	e8bd07f0 	pop	{r4, r5, r6, r7, r8, r9, r10}
+	MOV R0, #1					// Return 1
+ 6d4:	e3a00001 	mov	r0, #1
+	BX LR 
+ 6d8:	e12fff1e 	bx	lr
+	-> R0 - char* data_to_be_read
+*/
+read_PS2_data_ASM: //Parameters R0 is the character pointer
+
+	PUSH {R4-R10}				// Store state
+	LDR R2, =PS2_DATAREG		// Get PS2 data register address
+ 6dc:	ff200100 	.word	0xff200100
+
+000006e0 <write_audio_FIFO_ASM>:
+/*write_audio_FIFO_ASM: Writes data to the left and right channels
+	R0 -> int data
+*/
+write_audio_FIFO_ASM:
+	
+	PUSH {R4-R7, LR}
+ 6e0:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+	LDR R1, =FIFO_LOCATION			// Pointer to fifospace 
+ 6e4:	e59f1030 	ldr	r1, [pc, #48]	; 71c <write_audio_FIFO_ASM+0x3c>
+	
+	LDR R4, [R1]					// Load fifiospace
+ 6e8:	e5914000 	ldr	r4, [r1]
+	LDR R6, =MASK					// Load mask
+ 6ec:	e59f602c 	ldr	r6, [pc, #44]	; 720 <write_audio_FIFO_ASM+0x40>
+	ANDS R4, R6						// Get top 16 bits of fifospace
+ 6f0:	e0144006 	ands	r4, r4, r6
+	MOVEQ R0, #0					// if (no capacity left) {
+ 6f4:	03a00000 	moveq	r0, #0
+	POPEQ {R4-R7, LR}				// Branch out. Unable to write to buffer.
+ 6f8:	08bd40f0 	popeq	{r4, r5, r6, r7, lr}
+	BXEQ LR 
+ 6fc:	012fff1e 	bxeq	lr
+
+	LDR R2, =LEFT_LOCATION			// Pointer to leftdata
+ 700:	e59f201c 	ldr	r2, [pc, #28]	; 724 <write_audio_FIFO_ASM+0x44>
+	LDR R3, =RIGHT_LOCATION			// Pointer to rightdata		
+ 704:	e59f301c 	ldr	r3, [pc, #28]	; 728 <write_audio_FIFO_ASM+0x48>
+	STR R0, [R3]					// Store data in right data
+ 708:	e5830000 	str	r0, [r3]
+	STR R0, [R2]					// Store data in left data
+ 70c:	e5820000 	str	r0, [r2]
+	
+	
+	MOV R0, #1 						// Return 1 for a success state 
+ 710:	e3a00001 	mov	r0, #1
+	POP {R4-R7, LR}
+ 714:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+	BX LR
+ 718:	e12fff1e 	bx	lr
+	R0 -> int data
+*/
+write_audio_FIFO_ASM:
+	
+	PUSH {R4-R7, LR}
+	LDR R1, =FIFO_LOCATION			// Pointer to fifospace 
+ 71c:	ff203044 	.word	0xff203044
+	
+	LDR R4, [R1]					// Load fifiospace
+	LDR R6, =MASK					// Load mask
+ 720:	ffff0000 	.word	0xffff0000
+	ANDS R4, R6						// Get top 16 bits of fifospace
+	MOVEQ R0, #0					// if (no capacity left) {
+	POPEQ {R4-R7, LR}				// Branch out. Unable to write to buffer.
+	BXEQ LR 
+
+	LDR R2, =LEFT_LOCATION			// Pointer to leftdata
+ 724:	ff203048 	.word	0xff203048
+	LDR R3, =RIGHT_LOCATION			// Pointer to rightdata		
+ 728:	ff20304c 	.word	0xff20304c
+
+0000072c <atexit>:
+ 72c:	e1a01000 	mov	r1, r0
+ 730:	e3a00000 	mov	r0, #0
+ 734:	e92d4008 	push	{r3, lr}
+ 738:	e1a02000 	mov	r2, r0
+ 73c:	e1a03000 	mov	r3, r0
+ 740:	eb00000e 	bl	780 <__register_exitproc>
+ 744:	e8bd4008 	pop	{r3, lr}
+ 748:	e12fff1e 	bx	lr
+
+0000074c <exit>:
+ 74c:	e92d4008 	push	{r3, lr}
+ 750:	e3a01000 	mov	r1, #0
+ 754:	e1a04000 	mov	r4, r0
+ 758:	eb000045 	bl	874 <__call_exitprocs>
+ 75c:	e59f3018 	ldr	r3, [pc, #24]	; 77c <exit+0x30>
+ 760:	e5930000 	ldr	r0, [r3]
+ 764:	e590303c 	ldr	r3, [r0, #60]	; 0x3c
+ 768:	e3530000 	cmp	r3, #0
+ 76c:	11a0e00f 	movne	lr, pc
+ 770:	112fff13 	bxne	r3
+ 774:	e1a00004 	mov	r0, r4
+ 778:	eb0000c9 	bl	aa4 <_exit>
+ 77c:	00000b64 	.word	0x00000b64
+
+00000780 <__register_exitproc>:
+ 780:	e59fc0e4 	ldr	r12, [pc, #228]	; 86c <__register_exitproc+0xec>
+ 784:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 788:	e59c4000 	ldr	r4, [r12]
+ 78c:	e594c148 	ldr	r12, [r4, #328]	; 0x148
+ 790:	e35c0000 	cmp	r12, #0
+ 794:	0284cf53 	addeq	r12, r4, #332	; 0x14c
+ 798:	e59c5004 	ldr	r5, [r12, #4]
+ 79c:	0584c148 	streq	r12, [r4, #328]	; 0x148
+ 7a0:	e355001f 	cmp	r5, #31
+ 7a4:	e24dd010 	sub	sp, sp, #16
+ 7a8:	e1a06000 	mov	r6, r0
+ 7ac:	da000015 	ble	808 <__register_exitproc+0x88>
+ 7b0:	e59f00b8 	ldr	r0, [pc, #184]	; 870 <__register_exitproc+0xf0>
+ 7b4:	e3500000 	cmp	r0, #0
+ 7b8:	1a000001 	bne	7c4 <__register_exitproc+0x44>
+ 7bc:	e3e00000 	mvn	r0, #0
+ 7c0:	ea000018 	b	828 <__register_exitproc+0xa8>
+ 7c4:	e3a00e19 	mov	r0, #400	; 0x190
+ 7c8:	e58d100c 	str	r1, [sp, #12]
+ 7cc:	e58d2008 	str	r2, [sp, #8]
+ 7d0:	e58d3004 	str	r3, [sp, #4]
+ 7d4:	e320f000 	nop	{0}
+ 7d8:	e250c000 	subs	r12, r0, #0
+ 7dc:	e59d100c 	ldr	r1, [sp, #12]
+ 7e0:	e59d2008 	ldr	r2, [sp, #8]
+ 7e4:	e59d3004 	ldr	r3, [sp, #4]
+ 7e8:	0afffff3 	beq	7bc <__register_exitproc+0x3c>
+ 7ec:	e5945148 	ldr	r5, [r4, #328]	; 0x148
+ 7f0:	e3a00000 	mov	r0, #0
+ 7f4:	e58c0004 	str	r0, [r12, #4]
+ 7f8:	e58c5000 	str	r5, [r12]
+ 7fc:	e584c148 	str	r12, [r4, #328]	; 0x148
+ 800:	e58c0188 	str	r0, [r12, #392]	; 0x188
+ 804:	e58c018c 	str	r0, [r12, #396]	; 0x18c
+ 808:	e3560000 	cmp	r6, #0
+ 80c:	e59c4004 	ldr	r4, [r12, #4]
+ 810:	1a000007 	bne	834 <__register_exitproc+0xb4>
+ 814:	e2843002 	add	r3, r4, #2
+ 818:	e2844001 	add	r4, r4, #1
+ 81c:	e78c1103 	str	r1, [r12, r3, lsl #2]
+ 820:	e58c4004 	str	r4, [r12, #4]
+ 824:	e3a00000 	mov	r0, #0
+ 828:	e28dd010 	add	sp, sp, #16
+ 82c:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
+ 830:	e12fff1e 	bx	lr
+ 834:	e3a00001 	mov	r0, #1
+ 838:	e1a00410 	lsl	r0, r0, r4
+ 83c:	e08c8104 	add	r8, r12, r4, lsl #2
+ 840:	e3560002 	cmp	r6, #2
+ 844:	e59c7188 	ldr	r7, [r12, #392]	; 0x188
+ 848:	e5883108 	str	r3, [r8, #264]	; 0x108
+ 84c:	059c318c 	ldreq	r3, [r12, #396]	; 0x18c
+ 850:	e1877000 	orr	r7, r7, r0
+ 854:	01830000 	orreq	r0, r3, r0
+ 858:	e1a05008 	mov	r5, r8
+ 85c:	e5882088 	str	r2, [r8, #136]	; 0x88
+ 860:	e58c7188 	str	r7, [r12, #392]	; 0x188
+ 864:	058c018c 	streq	r0, [r12, #396]	; 0x18c
+ 868:	eaffffe9 	b	814 <__register_exitproc+0x94>
+ 86c:	00000b64 	.word	0x00000b64
+ 870:	00000000 	.word	0x00000000
+
+00000874 <__call_exitprocs>:
+ 874:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 878:	e59f3168 	ldr	r3, [pc, #360]	; 9e8 <__call_exitprocs+0x174>
+ 87c:	e5933000 	ldr	r3, [r3]
+ 880:	e24dd014 	sub	sp, sp, #20
+ 884:	e58d3004 	str	r3, [sp, #4]
+ 888:	e2833f52 	add	r3, r3, #328	; 0x148
+ 88c:	e58d0008 	str	r0, [sp, #8]
+ 890:	e58d300c 	str	r3, [sp, #12]
+ 894:	e1a07001 	mov	r7, r1
+ 898:	e3a08001 	mov	r8, #1
+ 89c:	e59d3004 	ldr	r3, [sp, #4]
+ 8a0:	e5936148 	ldr	r6, [r3, #328]	; 0x148
+ 8a4:	e3560000 	cmp	r6, #0
+ 8a8:	e59db00c 	ldr	r11, [sp, #12]
+ 8ac:	0a000033 	beq	980 <__call_exitprocs+0x10c>
+ 8b0:	e5965004 	ldr	r5, [r6, #4]
+ 8b4:	e2554001 	subs	r4, r5, #1
+ 8b8:	5286a088 	addpl	r10, r6, #136	; 0x88
+ 8bc:	5285501f 	addpl	r5, r5, #31
+ 8c0:	508a5105 	addpl	r5, r10, r5, lsl #2
+ 8c4:	5a000007 	bpl	8e8 <__call_exitprocs+0x74>
+ 8c8:	ea000029 	b	974 <__call_exitprocs+0x100>
+ 8cc:	e5953000 	ldr	r3, [r5]
+ 8d0:	e1530007 	cmp	r3, r7
+ 8d4:	0a000005 	beq	8f0 <__call_exitprocs+0x7c>
+ 8d8:	e2444001 	sub	r4, r4, #1
+ 8dc:	e3740001 	cmn	r4, #1
+ 8e0:	e2455004 	sub	r5, r5, #4
+ 8e4:	0a000022 	beq	974 <__call_exitprocs+0x100>
+ 8e8:	e3570000 	cmp	r7, #0
+ 8ec:	1afffff6 	bne	8cc <__call_exitprocs+0x58>
+ 8f0:	e5963004 	ldr	r3, [r6, #4]
+ 8f4:	e06a2005 	rsb	r2, r10, r5
+ 8f8:	e2433001 	sub	r3, r3, #1
+ 8fc:	e0862002 	add	r2, r6, r2
+ 900:	e1530004 	cmp	r3, r4
+ 904:	e5123078 	ldr	r3, [r2, #-120]	; 0xffffff88
+ 908:	13a01000 	movne	r1, #0
+ 90c:	05864004 	streq	r4, [r6, #4]
+ 910:	15021078 	strne	r1, [r2, #-120]	; 0xffffff88
+ 914:	e3530000 	cmp	r3, #0
+ 918:	0affffee 	beq	8d8 <__call_exitprocs+0x64>
+ 91c:	e1a02418 	lsl	r2, r8, r4
+ 920:	e5961188 	ldr	r1, [r6, #392]	; 0x188
+ 924:	e1120001 	tst	r2, r1
+ 928:	e5969004 	ldr	r9, [r6, #4]
+ 92c:	0a000016 	beq	98c <__call_exitprocs+0x118>
+ 930:	e596118c 	ldr	r1, [r6, #396]	; 0x18c
+ 934:	e1120001 	tst	r2, r1
+ 938:	1a000016 	bne	998 <__call_exitprocs+0x124>
+ 93c:	e59d0008 	ldr	r0, [sp, #8]
+ 940:	e5151080 	ldr	r1, [r5, #-128]	; 0xffffff80
+ 944:	e1a0e00f 	mov	lr, pc
+ 948:	e12fff13 	bx	r3
+ 94c:	e5963004 	ldr	r3, [r6, #4]
+ 950:	e1530009 	cmp	r3, r9
+ 954:	1affffd0 	bne	89c <__call_exitprocs+0x28>
+ 958:	e59b3000 	ldr	r3, [r11]
+ 95c:	e1530006 	cmp	r3, r6
+ 960:	1affffcd 	bne	89c <__call_exitprocs+0x28>
+ 964:	e2444001 	sub	r4, r4, #1
+ 968:	e3740001 	cmn	r4, #1
+ 96c:	e2455004 	sub	r5, r5, #4
+ 970:	1affffdc 	bne	8e8 <__call_exitprocs+0x74>
+ 974:	e59f1070 	ldr	r1, [pc, #112]	; 9ec <__call_exitprocs+0x178>
+ 978:	e3510000 	cmp	r1, #0
+ 97c:	1a000009 	bne	9a8 <__call_exitprocs+0x134>
+ 980:	e28dd014 	add	sp, sp, #20
+ 984:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 988:	e12fff1e 	bx	lr
+ 98c:	e1a0e00f 	mov	lr, pc
+ 990:	e12fff13 	bx	r3
+ 994:	eaffffec 	b	94c <__call_exitprocs+0xd8>
+ 998:	e5150080 	ldr	r0, [r5, #-128]	; 0xffffff80
+ 99c:	e1a0e00f 	mov	lr, pc
+ 9a0:	e12fff13 	bx	r3
+ 9a4:	eaffffe8 	b	94c <__call_exitprocs+0xd8>
+ 9a8:	e5963004 	ldr	r3, [r6, #4]
+ 9ac:	e3530000 	cmp	r3, #0
+ 9b0:	e5963000 	ldr	r3, [r6]
+ 9b4:	1a000008 	bne	9dc <__call_exitprocs+0x168>
+ 9b8:	e3530000 	cmp	r3, #0
+ 9bc:	0a000006 	beq	9dc <__call_exitprocs+0x168>
+ 9c0:	e1a00006 	mov	r0, r6
+ 9c4:	e58b3000 	str	r3, [r11]
+ 9c8:	e320f000 	nop	{0}
+ 9cc:	e59b6000 	ldr	r6, [r11]
+ 9d0:	e3560000 	cmp	r6, #0
+ 9d4:	1affffb5 	bne	8b0 <__call_exitprocs+0x3c>
+ 9d8:	eaffffe8 	b	980 <__call_exitprocs+0x10c>
+ 9dc:	e1a0b006 	mov	r11, r6
+ 9e0:	e1a06003 	mov	r6, r3
+ 9e4:	eafffff9 	b	9d0 <__call_exitprocs+0x15c>
+ 9e8:	00000b64 	.word	0x00000b64
+ 9ec:	00000000 	.word	0x00000000
+
+000009f0 <register_fini>:
+ 9f0:	e92d4008 	push	{r3, lr}
+ 9f4:	e59f3010 	ldr	r3, [pc, #16]	; a0c <register_fini+0x1c>
+ 9f8:	e3530000 	cmp	r3, #0
+ 9fc:	159f000c 	ldrne	r0, [pc, #12]	; a10 <register_fini+0x20>
+ a00:	1bffff49 	blne	72c <atexit>
+ a04:	e8bd4008 	pop	{r3, lr}
+ a08:	e12fff1e 	bx	lr
+ a0c:	00000b8c 	.word	0x00000b8c
+ a10:	00000a14 	.word	0x00000a14
+
+00000a14 <__libc_fini_array>:
+ a14:	e92d4038 	push	{r3, r4, r5, lr}
+ a18:	e59f5030 	ldr	r5, [pc, #48]	; a50 <__libc_fini_array+0x3c>
+ a1c:	e59f4030 	ldr	r4, [pc, #48]	; a54 <__libc_fini_array+0x40>
+ a20:	e0654004 	rsb	r4, r5, r4
+ a24:	e1b04144 	asrs	r4, r4, #2
+ a28:	10855104 	addne	r5, r5, r4, lsl #2
+ a2c:	0a000004 	beq	a44 <__libc_fini_array+0x30>
+ a30:	e5353004 	ldr	r3, [r5, #-4]!
+ a34:	e1a0e00f 	mov	lr, pc
+ a38:	e12fff13 	bx	r3
+ a3c:	e2544001 	subs	r4, r4, #1
+ a40:	1afffffa 	bne	a30 <__libc_fini_array+0x1c>
+ a44:	eb000050 	bl	b8c <__libc_fini>
+ a48:	e8bd4038 	pop	{r3, r4, r5, lr}
+ a4c:	e12fff1e 	bx	lr
+ a50:	00000ba4 	.word	0x00000ba4
+ a54:	00000ba8 	.word	0x00000ba8
+
+00000a58 <__cs3_premain>:
+ a58:	e92d4008 	push	{r3, lr}
+ a5c:	eb00001d 	bl	ad8 <__libc_init_array>
+ a60:	e59f3030 	ldr	r3, [pc, #48]	; a98 <__cs3_premain+0x40>
+ a64:	e3530000 	cmp	r3, #0
+ a68:	15930000 	ldrne	r0, [r3]
+ a6c:	01a00003 	moveq	r0, r3
+ a70:	e59f3024 	ldr	r3, [pc, #36]	; a9c <__cs3_premain+0x44>
+ a74:	e3530000 	cmp	r3, #0
+ a78:	15931000 	ldrne	r1, [r3]
+ a7c:	01a01003 	moveq	r1, r3
+ a80:	e3a02000 	mov	r2, #0
+ a84:	ebfffe7d 	bl	480 <main>
+ a88:	e59f3010 	ldr	r3, [pc, #16]	; aa0 <__cs3_premain+0x48>
+ a8c:	e3530000 	cmp	r3, #0
+ a90:	1bffff2d 	blne	74c <exit>
+ a94:	eafffffe 	b	a94 <__cs3_premain+0x3c>
+	...
+ aa0:	0000074c 	.word	0x0000074c
+
+00000aa4 <_exit>:
+ aa4:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ aa8:	e3a00018 	mov	r0, #24
+ aac:	e59f1004 	ldr	r1, [pc, #4]	; ab8 <_exit+0x14>
+ ab0:	ef123456 	svc	0x00123456
+ ab4:	eafffffe 	b	ab4 <_exit+0x10>
+ ab8:	00020026 	.word	0x00020026
+
+00000abc <__cs3_isr_interrupt>:
+ abc:	eafffffe 	b	abc <__cs3_isr_interrupt>
+
+00000ac0 <__cs3_isr_undef>:
+ ac0:	eafffffe 	b	ac0 <__cs3_isr_undef>
+
+00000ac4 <__cs3_isr_swi>:
+ ac4:	eafffffe 	b	ac4 <__cs3_isr_swi>
+
+00000ac8 <__cs3_isr_pabort>:
+ ac8:	eafffffe 	b	ac8 <__cs3_isr_pabort>
+
+00000acc <__cs3_isr_dabort>:
+ acc:	eafffffe 	b	acc <__cs3_isr_dabort>
+
+00000ad0 <__cs3_isr_irq>:
+ ad0:	eafffffe 	b	ad0 <__cs3_isr_irq>
+
+00000ad4 <__cs3_isr_fiq>:
+ ad4:	eafffffe 	b	ad4 <__cs3_isr_fiq>
+
+00000ad8 <__libc_init_array>:
+ ad8:	e92d4070 	push	{r4, r5, r6, lr}
+ adc:	e59f506c 	ldr	r5, [pc, #108]	; b50 <__libc_init_array+0x78>
+ ae0:	e59f606c 	ldr	r6, [pc, #108]	; b54 <__libc_init_array+0x7c>
+ ae4:	e0656006 	rsb	r6, r5, r6
+ ae8:	e1b06146 	asrs	r6, r6, #2
+ aec:	12455004 	subne	r5, r5, #4
+ af0:	13a04000 	movne	r4, #0
+ af4:	0a000005 	beq	b10 <__libc_init_array+0x38>
+ af8:	e5b53004 	ldr	r3, [r5, #4]!
+ afc:	e2844001 	add	r4, r4, #1
+ b00:	e1a0e00f 	mov	lr, pc
+ b04:	e12fff13 	bx	r3
+ b08:	e1560004 	cmp	r6, r4
+ b0c:	1afffff9 	bne	af8 <__libc_init_array+0x20>
+ b10:	e59f5040 	ldr	r5, [pc, #64]	; b58 <__libc_init_array+0x80>
+ b14:	e59f6040 	ldr	r6, [pc, #64]	; b5c <__libc_init_array+0x84>
+ b18:	e0656006 	rsb	r6, r5, r6
+ b1c:	eb000012 	bl	b6c <_init>
+ b20:	e1b06146 	asrs	r6, r6, #2
+ b24:	12455004 	subne	r5, r5, #4
+ b28:	13a04000 	movne	r4, #0
+ b2c:	0a000005 	beq	b48 <__libc_init_array+0x70>
+ b30:	e5b53004 	ldr	r3, [r5, #4]!
+ b34:	e2844001 	add	r4, r4, #1
+ b38:	e1a0e00f 	mov	lr, pc
+ b3c:	e12fff13 	bx	r3
+ b40:	e1560004 	cmp	r6, r4
+ b44:	1afffff9 	bne	b30 <__libc_init_array+0x58>
+ b48:	e8bd4070 	pop	{r4, r5, r6, lr}
+ b4c:	e12fff1e 	bx	lr
+ b50:	00000b84 	.word	0x00000b84
+ b54:	00000b84 	.word	0x00000b84
+ b58:	00000b84 	.word	0x00000b84
+ b5c:	00000b8c 	.word	0x00000b8c
+
+Disassembly of section .rodata:
+
+00000b64 <_global_impure_ptr>:
+ b64:	00000bd0 00000043                       ....C...
+
+00000b6c <_init>:
+ b6c:	e1a0c00d 	mov	r12, sp
+ b70:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ b74:	e24cb004 	sub	r11, r12, #4
+ b78:	e24bd028 	sub	sp, r11, #40	; 0x28
+ b7c:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ b80:	e12fff1e 	bx	lr
+
+00000b84 <__init_array_start>:
+ b84:	000009f0 	.word	0x000009f0
+
+00000b88 <__frame_dummy_init_array_entry>:
+ b88:	00000208                                ....
+
+00000b8c <__libc_fini>:
+ b8c:	e1a0c00d 	mov	r12, sp
+ b90:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ b94:	e24cb004 	sub	r11, r12, #4
+ b98:	e24bd028 	sub	sp, r11, #40	; 0x28
+ b9c:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ ba0:	e12fff1e 	bx	lr
+
+00000ba4 <__fini_array_start>:
+ ba4:	000001c4 	.word	0x000001c4
+
+00000ba8 <__cs3_regions>:
+	...
+ bb4:	00001000 	.word	0x00001000
+ bb8:	00000020 	.word	0x00000020
+
+00000bbc <__cs3_regions_end>:
+ bbc:	00000000 	.word	0x00000000
